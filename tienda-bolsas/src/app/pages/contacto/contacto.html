@@ -1,1 +1,13 @@
-<p>contacto works!</p>
+<h2>Contacto</h2>
+
+<form #f="ngForm" (ngSubmit)="enviar(f)">
+
+  <input name="nombre" ngModel placeholder="Nombre"><br>
+  <input name="correo" ngModel placeholder="Correo"><br>
+  <input name="asunto" ngModel placeholder="Asunto"><br>
+
+  <textarea name="mensaje" ngModel placeholder="Mensaje"></textarea><br>
+
+  <button type="submit">Enviar</button>
+
+</form>

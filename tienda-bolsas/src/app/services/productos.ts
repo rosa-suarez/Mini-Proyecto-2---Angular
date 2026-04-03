@@ -11,24 +11,14 @@ export class ProductosService {
   constructor(private http: HttpClient) {}
 
   getProductos() {
-    return this.http.get(`${this.API}/productos`);
-  }
-
-  getProducto(id: number) {
-    return this.http.get(`${this.API}/productos/${id}`);
-  }
-
-  /*
-  getProductos() {
     return this.http.get<any[]>(`${this.API}/productos`);
   }
 
   getProducto(id: number) {
     return this.http.get<any>(`${this.API}/productos/${id}`);
   }
-  */
- 
-  agregarProducto(data:any) {
+
+  agregarProducto(data: any) {
     return this.http.post(`${this.API}/productos`, data);
   }
 }

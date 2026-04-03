@@ -6,3 +6,7 @@
   <p>{{ producto.precio | currency }}</p>
   <p>Stock: {{ producto.stock }}</p>
 </div>
+
+<div *ngIf="!producto">
+  <p>Cargando...</p>
+</div>

@@ -20,10 +20,15 @@ export class Detalle implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
+    const id = Number(this.route.snapshot.params['id']);
 
-    this.productosService.getProducto(id).subscribe(data => {
-      this.producto = data;
+    this.productosService.getProducto(id).subscribe({
+      next: (data) => {
+        this.producto = data;
+      },
+      error: (err) => {
+        console.error(err);
+      }
     });
   }
 }

@@ -5,7 +5,7 @@
 </div>
 
 <div *ngFor="let p of productos">
-  <h3>{{ p.nombre }}</h3>
+  <h3>{{ p.nombre | uppercase }}</h3>
   <p>{{ p.precio | currency }}</p>
 
   <button [routerLink]="['/producto', p.id]">

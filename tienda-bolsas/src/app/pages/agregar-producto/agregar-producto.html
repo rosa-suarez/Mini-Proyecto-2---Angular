@@ -1,1 +1,15 @@
-<p>agregar-producto works!</p>
+<h2>Agregar Producto</h2>
+
+<form [formGroup]="form" (ngSubmit)="guardar()">
+
+  <input placeholder="Nombre" formControlName="nombre"><br>
+  <input placeholder="Categoría" formControlName="categoria"><br>
+  <input placeholder="Marca" formControlName="marca"><br>
+  <input type="number" placeholder="Precio" formControlName="precio"><br>
+  <input type="number" placeholder="Stock" formControlName="stock"><br>
+  <input placeholder="Imagen" formControlName="imagen"><br>
+  <textarea placeholder="Descripción" formControlName="descripcion"></textarea><br>
+
+  <button type="submit">Guardar</button>
+
+</form>

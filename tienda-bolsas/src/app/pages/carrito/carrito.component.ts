@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
+import { CarritoService } from '../../services/carrito';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-carrito',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './carrito.html',
   styleUrl: './carrito.css',
 })
-export class Carrito {}
+export class CarritoComponent {
+
+  constructor(public carritoService: CarritoService) {}
+
+}

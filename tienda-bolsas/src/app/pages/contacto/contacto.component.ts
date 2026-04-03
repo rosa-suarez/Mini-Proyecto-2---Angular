@@ -1,9 +1,22 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MensajesService } from '../../services/mensajes';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contacto',
-  imports: [],
-  templateUrl: './contacto.html',
-  styleUrl: './contacto.css',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './contacto.html'
 })
-export class Contacto {}
+export class ContactoComponent {
+
+  constructor(private mensajesService: MensajesService) {}
+
+  enviar(form: any) {
+    this.mensajesService.enviarMensaje(form.value).subscribe(() => {
+      alert('Mensaje enviado');
+      form.reset();
+    });
+  }
+}

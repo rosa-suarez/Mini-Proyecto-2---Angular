@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductosService } from '../../services/productos.service';
+import { ProductosService } from '../../services/productos';
 import { RouterModule } from '@angular/router';
+import { CarritoService } from '../../services/carrito';
 
 @Component({
   selector: 'app-catalogo',
@@ -10,11 +11,14 @@ import { RouterModule } from '@angular/router';
   templateUrl: './catalogo.html',
   styleUrl: './catalogo.css',
 })
-export class Catalogo implements OnInit {
+export class CatalogoComponent implements OnInit {
 
   productos: any[] = [];
 
-  constructor(private productosService: ProductosService) {}
+  constructor(
+    private productosService: ProductosService,
+    private carritoService: CarritoService
+  ) {}
 
   ngOnInit() {
     this.productosService.getProductos().subscribe({
@@ -26,5 +30,10 @@ export class Catalogo implements OnInit {
         console.error(err);
       }
     });
+  }
+
+  agregar(producto: any) {
+    this.carritoService.agregar(producto);
+    alert('Agregado al carrito');
   }
 }

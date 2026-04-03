@@ -1,4 +1,4 @@
-<h2>Catálogo de Bolsas 👜</h2>
+<h2>Catálogo de Bolsas</h2>
 
 <div *ngIf="productos.length === 0">
   <p>No hay productos</p>
@@ -11,6 +11,8 @@
   <button [routerLink]="['/producto', p.id]">
     Ver detalle
   </button>
+
+  <button (click)="agregar(p)">Agregar al carrito</button>
 
   <hr>
 </div>

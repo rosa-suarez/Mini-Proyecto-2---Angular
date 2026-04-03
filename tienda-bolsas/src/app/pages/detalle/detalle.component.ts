@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductosService } from '../../services/productos.service';
+import { ProductosService } from '../../services/productos';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './detalle.html',
   styleUrl: './detalle.css',
 })
-export class Detalle implements OnInit {
+export class DetalleComponent implements OnInit {
 
   producto: any;
 

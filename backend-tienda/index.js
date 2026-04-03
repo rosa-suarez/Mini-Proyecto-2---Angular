@@ -51,8 +51,50 @@ app.get('/productos/:id', (req, res) => {
     });
 });
 
+const validarProducto = (req, res, next) => {
+    const { nombre, precio, stock } = req.body;
+
+    if (!nombre || !precio) {
+        return res.status(400).json({
+            error: 'Nombre y precio son obligatorios'
+        });
+    }
+
+    if (precio <= 0) {
+        return res.status(400).json({
+            error: 'El precio debe ser mayor a 0'
+        });
+    }
+
+    if (stock < 0) {
+        return res.status(400).json({
+            error: 'Stock no puede ser negativo'
+        });
+    }
+
+    next();
+};
+
+const validarMensaje = (req, res, next) => {
+    const { nombre, correo, mensaje } = req.body;
+
+    if (!nombre || !correo || !mensaje) {
+        return res.status(400).json({
+            error: 'Todos los campos son obligatorios'
+        });
+    }
+
+    if (!correo.includes('@')) {
+        return res.status(400).json({
+            error: 'Correo inválido'
+        });
+    }
+
+    next();
+};
+
 //insertar producto
-app.post('/productos', (req, res) => {
+app.post('/productos', validarProducto, (req, res) => {
     const data = req.body;
 
     if (!data.nombre || !data.precio) {
@@ -83,7 +125,7 @@ app.post('/productos', (req, res) => {
 });
 
 //insertar mensaje
-app.post('/mensajes', (req, res) => {
+app.post('/mensajes', validarMensaje, (req, res) => {
     const { nombre, correo, asunto, mensaje } = req.body;
 
     if (!nombre || !correo || !mensaje) {
@@ -102,6 +144,8 @@ app.post('/mensajes', (req, res) => {
         res.json({ mensaje: 'Mensaje guardado' });
     });
 });
+
+
 
 /* SERVIDOR */
 app.listen(3000, () => {

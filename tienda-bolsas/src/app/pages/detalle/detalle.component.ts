@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductosService } from '../../services/productos';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-detalle',
@@ -12,23 +13,32 @@ import { CommonModule } from '@angular/common';
 })
 export class DetalleComponent implements OnInit {
 
-  producto: any;
+  producto: any = null;
 
   constructor(
     private route: ActivatedRoute,
-    private productosService: ProductosService
+    private productosService: ProductosService,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.params['id']);
+    this.route.paramMap.subscribe(params => {
 
-    this.productosService.getProducto(id).subscribe({
-      next: (data) => {
-        this.producto = data;
-      },
-      error: (err) => {
-        console.error(err);
-      }
+      const id = Number(params.get('id'));
+
+      console.log('ID:', id); // 👈 opcional debug
+
+      this.productosService.getProducto(id).subscribe({
+        next: (data) => {
+          console.log('DATA:', data); // 👈 debug
+          this.producto = data;
+          this.cd.detectChanges(); // 👈 forzar actualización
+        },
+        error: (err) => {
+          console.error(err);
+        }
+      });
+
     });
   }
 }

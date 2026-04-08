@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ProductosService } from '../../services/productos';
 import { RouterModule } from '@angular/router';
 import { CarritoService } from '../../services/carrito';
+import { ChangeDetectorRef } from '@angular/core';
+//import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogo',
@@ -13,18 +15,21 @@ import { CarritoService } from '../../services/carrito';
 })
 export class CatalogoComponent implements OnInit {
 
-  productos: any[] = [];
+  productos: any[] | null = null;
 
   constructor(
     private productosService: ProductosService,
-    private carritoService: CarritoService
+    private carritoService: CarritoService,
+    private cd: ChangeDetectorRef
+    //private router: Router
   ) {}
 
   ngOnInit() {
     this.productosService.getProductos().subscribe({
       next: (data: any) => {
         this.productos = data;
-        console.log(data);
+
+        this.cd.detectChanges(); // 💥 ESTO LO ARREGLA
       },
       error: (err) => {
         console.error(err);

@@ -4,12 +4,13 @@ import { ProductosService } from '../../services/productos';
 import { RouterModule } from '@angular/router';
 import { CarritoService } from '../../services/carrito';
 import { ChangeDetectorRef } from '@angular/core';
+import { ProductoCardComponent } from '../../components/producto-card/producto-card.component';
 //import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ProductoCardComponent],
   templateUrl: './catalogo.html',
   styleUrl: './catalogo.css',
 })

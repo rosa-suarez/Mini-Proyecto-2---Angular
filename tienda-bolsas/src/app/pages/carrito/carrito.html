@@ -1,11 +1,13 @@
 <h2>Carrito</h2>
 
 <div *ngFor="let p of carritoService.carrito(); let i = index">
-  {{p.nombre}} - {{p.precio | currency}}
+
+  {{ p.nombre }} x {{ p.cantidad || 1 }} - {{ (p.precio * (p.cantidad || 1)) | currency }}
 
   <button (click)="carritoService.eliminar(i)">
     Eliminar
   </button>
+
 </div>
 
 <hr>

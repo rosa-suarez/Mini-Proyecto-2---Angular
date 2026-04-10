@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #F5F1EC;
+  color: #5C4432;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.85;
+}

@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-agregar-producto',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './agregar-producto.html'
+  templateUrl: './agregar-producto.html',
+  styleUrl: './agregar-producto.css'
 })
 export class AgregarProductoComponent {
 

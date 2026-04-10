@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-contacto',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './contacto.html'
+  templateUrl: './contacto.html',
+  styleUrl: './contacto.css'
 })
 export class ContactoComponent {
 

@@ -1,0 +1,46 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.form {
+  width: 100%;
+  max-width: 420px;
+
+  background-color: #FFFFFF;
+  padding: 25px;
+  border-radius: 16px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  width: 94%;
+  padding: 12px;
+  margin-bottom: 12px;
+
+  border-radius: 10px;
+  border: 1px solid #ddd;
+
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+button {
+  margin-top: 10px;
+  padding: 12px;
+
+  background-color: #8B6F47;
+  color: white;
+
+  border-radius: 10px;
+}

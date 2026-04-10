@@ -6,22 +6,8 @@ import { RouterModule } from '@angular/router';
   selector: 'app-producto-card',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  template: `
-    <div>
-      <h3>{{ producto.nombre | uppercase }}</h3>
-      <p>{{ producto.precio | currency }}</p>
-
-      <button [routerLink]="['/producto', producto.id]">
-        Ver detalle
-      </button>
-
-      <button (click)="agregar()">
-        Agregar al carrito
-      </button>
-
-      <hr>
-    </div>
-  `
+  templateUrl: './producto-card.html',
+  styleUrl: './producto-card.css'
 })
 
 export class ProductoCardComponent {

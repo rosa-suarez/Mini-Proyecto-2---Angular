@@ -10,10 +10,12 @@
 
 <div *ngIf="productos && productos.length > 0">
 
-  <app-producto-card
-    *ngFor="let p of productos"
-    [producto]="p"
-    (agregarClick)="agregar($event)">
-  </app-producto-card>
+  <div class="grid">
+    <app-producto-card
+      *ngFor="let p of productos"
+      [producto]="p"
+      (agregarClick)="agregar($event)">
+    </app-producto-card>
+  </div>
 
 </div>

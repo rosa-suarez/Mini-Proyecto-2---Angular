@@ -1,13 +1,11 @@
 <h2>Contacto</h2>
 
-<form #f="ngForm" (ngSubmit)="enviar(f)">
-
-  <input name="nombre" ngModel placeholder="Nombre"><br>
-  <input name="correo" ngModel placeholder="Correo"><br>
-  <input name="asunto" ngModel placeholder="Asunto"><br>
-
-  <textarea name="mensaje" ngModel placeholder="Mensaje"></textarea><br>
-
-  <button type="submit">Enviar</button>
-
-</form>
+<div class="form-container">
+  <form #f="ngForm" (ngSubmit)="enviar(f)" class="form">
+    <input name="nombre" ngModel placeholder="Nombre completo">
+    <input name="correo" ngModel placeholder="Correo electrónico">
+    <input name="asunto" ngModel placeholder="Asunto">
+    <textarea name="mensaje" ngModel placeholder="Escribe tu mensaje"></textarea>
+    <button type="submit">Enviar mensaje</button>
+  </form>
+</div>

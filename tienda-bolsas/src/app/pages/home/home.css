@@ -8,12 +8,10 @@
 .overlay {
   height: 100%;
   background-color: rgba(92, 68, 50, 0.6);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   color: #F5F1EC;
 }
 

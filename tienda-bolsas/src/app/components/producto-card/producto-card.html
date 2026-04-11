@@ -4,8 +4,8 @@
 
   <h3>{{ producto.nombre }}</h3>
 
-  <p [ngClass]="producto.disponible == 1 ? 'verde' : 'rojo'">
-    {{ producto.disponible == 1 ? 'Disponible' : 'Agotado' }}
+  <p [ngClass]="producto.stock > 0 ? 'verde' : 'rojo'">
+    {{ producto.stock > 0 ? 'Disponible' : 'Agotado' }}
   </p>
 
   <p class="precio">{{ producto.precio | currency }}</p>
@@ -14,7 +14,9 @@
     Ver detalle
   </button>
 
-  <button (click)="agregarClick.emit(producto)">
+  <button 
+    (click)="agregarClick.emit(producto)"
+    [disabled]="producto.stock === 0">
     Agregar al carrito
   </button>
 

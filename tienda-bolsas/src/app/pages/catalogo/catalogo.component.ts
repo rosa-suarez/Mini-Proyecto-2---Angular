@@ -26,20 +26,31 @@ export class CatalogoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.productosService.getProductos().subscribe({
-      next: (data: any) => {
-        this.productos = data;
-
-        this.cd.detectChanges(); // 💥 ESTO LO ARREGLA
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    });
+    this.cargarProductos();
   }
 
   agregar(producto: any) {
+
+    const carrito = this.carritoService.carrito();
+    const enCarrito = carrito.find(p => p.id === producto.id);
+    const cantidadActual = enCarrito ? (enCarrito.cantidad || 1) : 0;
+
+    if (cantidadActual >= producto.stock) {
+      alert('No hay más existencias disponibles ❌');
+      return;
+    }
+
     this.carritoService.agregar(producto);
-    alert('Agregado al carrito');
+    alert('Agregado al carrito ✅');
+  }
+
+  cargarProductos() {
+    this.productosService.getProductos().subscribe({
+      next: (data: any) => {
+        this.productos = data;
+        this.cd.detectChanges();
+      },
+      error: (err) => console.error(err)
+    });
   }
 }

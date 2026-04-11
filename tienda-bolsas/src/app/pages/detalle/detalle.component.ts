@@ -22,23 +22,21 @@ export class DetalleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params : any) => {
 
       const id = Number(params.get('id'));
-
-      console.log('ID:', id); // 👈 opcional debug
+      console.log('ID:', id); 
 
       this.productosService.getProducto(id).subscribe({
-        next: (data) => {
-          console.log('DATA:', data); // 👈 debug
+        next: (data : any) => {
+          console.log('DATA:', data); 
           this.producto = data;
-          this.cd.detectChanges(); // 👈 forzar actualización
+          this.cd.detectChanges(); 
         },
-        error: (err) => {
+        error: (err : any) => {
           console.error(err);
         }
       });
-
     });
   }
 }

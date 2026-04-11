@@ -39,18 +39,6 @@ app.get('/productos', (req, res) => {
     });
 });
 
-//productos por id
-// app.get('/productos/:id', (req, res) => {
-//     const id = req.params.id;
-
-//     db.query('SELECT * FROM productos WHERE id = ?', [id], (err, result) => {
-//         if (err) {
-//             return res.status(500).json(err);
-//         }
-//         res.json(result[0]);
-//     });
-// });
-
 app.get('/productos/:id', (req, res) => {
     const id = req.params.id;
 
@@ -138,6 +126,36 @@ app.post('/productos', validarProducto, (req, res) => {
             return res.status(500).json(err);
         }
         res.json({ mensaje: 'Producto agregado' });
+    });
+});
+
+// actualizar producto 
+app.put('/productos/:id', (req, res) => {
+    const id = req.params.id;
+    const data = req.body;
+
+    const sql = `
+        UPDATE productos
+        SET nombre = ?, categoria = ?, marca = ?, precio = ?, stock = ?, imagen = ?, descripcion = ?, disponible = ?
+        WHERE id = ?
+    `;
+
+    db.query(sql, [
+        data.nombre,
+        data.categoria,
+        data.marca,
+        data.precio,
+        data.stock,
+        data.imagen,
+        data.descripcion,
+        data.disponible,
+        id
+    ], (err, result) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+
+        res.json({ mensaje: 'Producto actualizado' });
     });
 });
 

@@ -17,7 +17,7 @@ app.use(express.json());
 //     database: 'tienda_bolsas'
 // });
 
-const pool = new Pool({
+const db = new Pool({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     user: process.env.DB_USER,
@@ -28,7 +28,7 @@ const pool = new Pool({
     }
 });
 
-pool.connect(err => {
+db.connect(err => {
     if (err) {
         console.log('Error conexión:', err);
     } else {

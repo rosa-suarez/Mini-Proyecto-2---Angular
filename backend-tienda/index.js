@@ -52,22 +52,33 @@ app.get('/productos', (req, res) => {
     });
 });
 
+// app.get('/productos/:id', (req, res) => {
+//     const id = req.params.id;
+
+//     console.time('query');
+
+//     db.query('SELECT * FROM productos WHERE id = ?', [id], (err, result) => {
+//         console.timeEnd('query');
+
+//         if (err) {
+//             return res.status(500).json(err);
+//         }
+
+//         res.json(result[0]);
+//     });
+// });
+
 app.get('/productos/:id', (req, res) => {
     const id = req.params.id;
 
-    console.time('query');
-
-    db.query('SELECT * FROM productos WHERE id = ?', [id], (err, result) => {
-        console.timeEnd('query');
-
+    db.query('SELECT * FROM productos WHERE id = $1', [id], (err, result) => {
         if (err) {
             return res.status(500).json(err);
         }
 
-        res.json(result[0]);
+        res.json(result.rows[0]);
     });
 });
-
 
 const validarProducto = (req, res, next) => {
     const { nombre, precio, stock } = req.body;

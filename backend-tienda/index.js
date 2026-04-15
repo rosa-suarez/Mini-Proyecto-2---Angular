@@ -133,7 +133,8 @@ const validarProducto = (req, res, next) => {
 };
 
 const validarMensaje = (req, res, next) => {
-    const { nombre, correo, mensaje } = req.body;
+    // const { nombre, correo, mensaje } = req.body;
+    const { nombre, correo, asunto, mensaje } = req.body || {};
 
     if (!nombre || !correo || !mensaje) {
         return res.status(400).json({
